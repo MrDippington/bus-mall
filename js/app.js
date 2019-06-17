@@ -56,7 +56,17 @@ new Img('unicorn', 'img/unicorn.jpg');
 new Img('usb', 'img/usb.gif');
 new Img('water-can', 'img/water-can.jpg');
 new Img('wine-glass', 'img/wine-glass.jpg');
-function imageGenerator(){
+
+//if image is clicked, it's totalClicks will increase
+function imageGenerator(e){
+  e.preventDefault();
+  for(var i = 0; i < allImgs.length; i++){
+    if(e.target.title === allImgs[i].name){
+      allImgs[i].totalClicks++;
+    }
+
+  }
+  console.log(e.target.title);
   render();
 }
 
@@ -127,6 +137,6 @@ function random(min, max){
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-imgContainerEl.addEventListener('click', imageGenerator);
 
 render();
+imgContainerEl.addEventListener('click', imageGenerator);
