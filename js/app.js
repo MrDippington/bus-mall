@@ -2,19 +2,20 @@
 // not allow any results to be shown to users until there have been a total of 25 selections made
 // show how many times and item is displayed and clicked
 
- //when images is clicked add a vote 
+//when images is clicked add a vote 
 // custom font, color palette, layout with semantic HTML
 
 
 // Want to be able to receive clicks, and track those clicks for each image.
-// upon receiving a click, 3 non-duplicating random images need to be auto displayed
+
 // You'll probably find it useful to create a property that contains a text string you can use as an ID in HTML.
-// After 25 selections have been made, turn off the event listeners on the images (to prevent additional voting) and also display a list of the products with votes received with each list item looking like "3 votes for the Banana Slicer".
 
   
-  //once 25 votes have been made stop the event listener
-  //display the results
-
+//once 25 votes have been made stop the event listener
+//display the results
+//event listener
+//event handler
+// After 25 selections have been made, turn off the event listeners on the images (to prevent additional voting) and also display a list of the products with votes received with each list item looking like "3 votes for the Banana Slicer".
 
 'use strict';
 
@@ -55,9 +56,9 @@ new Img('unicorn', 'img/unicorn.jpg');
 new Img('usb', 'img/usb.gif');
 new Img('water-can', 'img/water-can.jpg');
 new Img('wine-glass', 'img/wine-glass.jpg');
-// array can be as long as 6
-// need to use splice to remove first 3
-//
+function imageGenerator(){
+  render();
+}
 
 function render(){
 // 1st Image
@@ -78,6 +79,7 @@ function render(){
   imgOneEl.alt = allImgs[randomIndex].name;
 
   allImgs[randomIndex].timesDisplayed ++;
+ 
   // 2nd Image
   randomIndex = random(0, allImgs.length -1);
 
@@ -115,10 +117,16 @@ function render(){
   
   allImgs[randomIndex].timesDisplayed ++;
   maxVotes --;
+  if(maxVotes === 0){
+    imgContainerEl.removeEventListener('click', imageGenerator);
+
+  }
 }
 
 function random(min, max){
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
+
+imgContainerEl.addEventListener('click', imageGenerator);
 
 render();
