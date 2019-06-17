@@ -1,13 +1,19 @@
 // store, calculate, and visually display the resulting data
 // not allow any results to be shown to users until there have been a total of 25 selections made
-// show how many times and item is displayed and clicked 
+// show how many times and item is displayed and clicked
+
+ //when images is clicked add a vote 
 // custom font, color palette, layout with semantic HTML
-// :user_stories.md w/ a user stories commit for this
+
 
 // Want to be able to receive clicks, and track those clicks for each image.
 // upon receiving a click, 3 non-duplicating random images need to be auto displayed
 // You'll probably find it useful to create a property that contains a text string you can use as an ID in HTML.
 // After 25 selections have been made, turn off the event listeners on the images (to prevent additional voting) and also display a list of the products with votes received with each list item looking like "3 votes for the Banana Slicer".
+
+  
+  //once 25 votes have been made stop the event listener
+  //display the results
 
 
 'use strict';
@@ -18,6 +24,7 @@ var imgTwoEl = document.getElementById('img-two');
 var imgThreeEl = document.getElementById('img-three');
 var allImgs = [];
 var recentRandomNumbers = [];
+var maxVotes = 25;
 
 function Img(name, filepath){
   this.name = name;
@@ -70,6 +77,7 @@ function render(){
   imgOneEl.title = allImgs[randomIndex].name;
   imgOneEl.alt = allImgs[randomIndex].name;
 
+  allImgs[randomIndex].timesDisplayed ++;
   // 2nd Image
   randomIndex = random(0, allImgs.length -1);
 
@@ -87,6 +95,7 @@ function render(){
   imgTwoEl.title = allImgs[randomIndex].name;
   imgTwoEl.alt = allImgs[randomIndex].name;
 
+  allImgs[randomIndex].timesDisplayed ++;
   // 3rd Image
   randomIndex = random(0, allImgs.length -1);
 
@@ -104,6 +113,8 @@ function render(){
   imgThreeEl.title = allImgs[randomIndex].name;
   imgThreeEl.alt = allImgs[randomIndex].name;
   
+  allImgs[randomIndex].timesDisplayed ++;
+  maxVotes --;
 }
 
 function random(min, max){
