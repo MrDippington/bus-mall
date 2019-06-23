@@ -16,6 +16,7 @@
 //event listener
 //event handler
 // After 25 selections have been made, turn off the event listeners on the images (to prevent additional voting) and also display a list of the products with votes received with each list item looking like "3 votes for the Banana Slicer".
+  // when maxVotes reaches 0, render to the DOM every object in allImgs in an unordered list
 
 'use strict';
 
@@ -57,7 +58,6 @@ new Img('usb', 'img/usb.gif');
 new Img('water-can', 'img/water-can.jpg');
 new Img('wine-glass', 'img/wine-glass.jpg');
 
-//if image is clicked, it's totalClicks will increase
 function imageGenerator(e){
   e.preventDefault();
   for(var i = 0; i < allImgs.length; i++){
@@ -66,7 +66,6 @@ function imageGenerator(e){
     }
 
   }
-  console.log(e.target.title);
   render();
 }
 
