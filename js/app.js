@@ -70,19 +70,22 @@ function imageGenerator(e){
 }
 
 function render(){
-// 1st Image
+
+  //code for getting random number and pushing to array
   var randomIndex = random(0, allImgs.length -1);
 
   while(recentRandomNumbers.includes(randomIndex)){
     randomIndex = random(0, allImgs.length-1);
   }
-
+//why?
   if(recentRandomNumbers.length > 6){
     recentRandomNumbers.splice(0,3);
   }
 
   recentRandomNumbers.push(randomIndex);
 
+
+  
   imgOneEl.src = allImgs[randomIndex].filepath;
   imgOneEl.title = allImgs[randomIndex].name;
   imgOneEl.alt = allImgs[randomIndex].name;
